@@ -12,7 +12,7 @@ class PokemonRepositoryImpl @Inject constructor(
     private val api: PokeApi
 ) : PokemonRepository {
 
-    suspend fun getPokemonList(limit: Int, offset: Int): Resource<PokemonList> {
+    override suspend fun getPokemonList(limit: Int, offset: Int): Resource<PokemonList> {
         val response = try {
             api.getPokemonList(limit, offset)
         } catch (e: Exception) {
@@ -21,7 +21,7 @@ class PokemonRepositoryImpl @Inject constructor(
         return Resource.Success(response)
     }
 
-    suspend fun getPokemonInfo(pokemonName: String): Resource<Pokemon> {
+    override suspend fun getPokemonInfo(pokemonName: String): Resource<Pokemon> {
         val response = try {
             api.getPokemonInfo(pokemonName)
         } catch (e: Exception) {
