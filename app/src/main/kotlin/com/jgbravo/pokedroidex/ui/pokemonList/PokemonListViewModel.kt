@@ -13,6 +13,7 @@ import com.jgbravo.pokedroidex.models.PokedexListEntry
 import com.jgbravo.pokedroidex.util.Constants.IMG_POKEMON_URL
 import com.jgbravo.pokedroidex.util.Constants.PAGE_SIZE
 import com.jgbravo.pokedroidex.util.Resource.Error
+import com.jgbravo.pokedroidex.util.Resource.Loading
 import com.jgbravo.pokedroidex.util.Resource.Success
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -65,11 +66,11 @@ class PokemonListViewModel @Inject constructor(
                     isLoading.value = false
                     pokemonList.value += pokedexEntries
                 }
-
                 is Error -> {
                     loadError.value = result.message!!
                     isLoading.value = false
                 }
+                is Loading -> Unit
             }
         }
     }

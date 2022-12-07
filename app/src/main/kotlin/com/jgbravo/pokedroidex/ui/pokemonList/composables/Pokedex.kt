@@ -42,6 +42,7 @@ import androidx.navigation.NavController
 import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import com.jgbravo.pokedroidex.models.PokedexListEntry
+import com.jgbravo.pokedroidex.ui.navigation.AppScreens
 import com.jgbravo.pokedroidex.ui.pokemonList.PokemonListViewModel
 import com.jgbravo.pokedroidex.ui.theme.RobotoCondensed
 
@@ -110,7 +111,7 @@ fun PokedexEntry(
             )
             .clickable {
                 navController.navigate(
-                    "pokemon_detail_screen/${dominantColor.toArgb()}/${entry.pokemonName}"
+                    "${AppScreens.PokemonDetailScreen.route}/${dominantColor.toArgb()}/${entry.pokemonName}"
                 )
             }
     ) {
